@@ -1,13 +1,13 @@
 /* footer */
 .footer {
-  background-color: var(--bg-dark);
-  position: absolute;
+  background-color: var(--bg-pont-site);
+  position: relative;
   bottom: 0;
   left: 0;
   text-align: center;
   padding: 20px;
   margin: 0;
-  color: #ffffff;
+  color: var(--white);
   width: 100%;
 }
 

@@ -8,7 +8,7 @@
 }
 
 #moviestar-title {
-  color: #ffffff;
+  color: var(--white);
   position: absolute;
   bottom: -2px;
   font-size: 30px;
@@ -17,12 +17,12 @@
 }
 
 #main-navbar {
-  background-color: var(--bg-navbar);
+  background-color: var(--bg-pont-site);
 }
 
 #search-form {
   margin: 0 auto;
-  background-color: #FFF;
+  background-color: var(--white);
   border-radius: 5px;
   width: 50%;
   margin-left: 180px;
@@ -43,11 +43,11 @@
   width: 100%;
 }
 .navbar-nav .nav-item .nav-link {
-  color: #FFF;
+  color: var(--white);
   transition: .5s;
 }
 .navbar-nav .nav-item .nav-link:hover {
-  color: #999;
+  color: var(--color-hover-gray);
 }
 .bold {
   font-weight: bold;
