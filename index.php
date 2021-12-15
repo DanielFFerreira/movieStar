@@ -59,7 +59,7 @@
   </main>
 
   <!-- footer -->
-  <footer id="footer">
+  <footer class="footer">
     <div class="social-container">
       <ul>
         <li>
@@ -74,7 +74,7 @@
       </ul>
     </div>
     <!-- links filmes / críticas / registrar -->
-    <div id="footer-links-container">
+    <div class="footer-links-container">
       <ul>
         <li><a href="#">Adicionar filme</a></li>
         <li><a href="#">Adicionar crítica</a></li>
@@ -82,7 +82,7 @@
       </ul>
     </div>
     <!-- copyright footer -->
-    <p>&copy; 20201 Daniel Ferreira</p>
+    <p>&copy; <?= date("Y") ?> Daniel Ferreira</p>
   </footer>
 
 
