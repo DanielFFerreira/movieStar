@@ -1,6 +1,8 @@
 <?php
   // inserindo uma vez o arquivo globals
   require_once("config/globals.php");
+  // inserir o arquivo de conexão com o banco de dados
+  require_once("app/database/db.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
