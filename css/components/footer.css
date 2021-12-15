@@ -1,6 +1,7 @@
 /* footer */
 .footer {
-  background-color: var(--bg-pont-site);
+  background-color: var(--bg-dark);
+  border: 1px solid var(--color-border-top);
   position: relative;
   bottom: 0;
   left: 0;

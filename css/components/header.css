@@ -52,3 +52,26 @@
 .bold {
   font-weight: bold;
 }
+.msg-container {
+  background-color: var(--bg-dark);
+  padding: 15px;
+}
+.msg {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  border: solid 1px #000;
+  text-align: center;
+}
+
+.msg.error {
+  color: var(--color-msg-error);
+  background-color: var(--bg-msg-error);
+  border-color: var(--border-msg-error);
+}
+
+.msg.sucess {
+  color: var(--color-msg-sucess);
+  background-color: var(--bg-msg-sucess);
+  border-color: var(--border-msg-sucess);
+}
