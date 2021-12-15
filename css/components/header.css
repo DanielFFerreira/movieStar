@@ -75,3 +75,16 @@
   background-color: var(--bg-msg-sucess);
   border-color: var(--border-msg-sucess);
 }
+
+/* login */
+.card-btn {
+  color: var(--bg-dark);
+  background: var(--bg-yellow-btn-entrar);
+  border: 3px solid var(--color-border-btn-entrar);
+  width: 100%;
+}
+.card-btn:hover {
+  background-color: transparent;
+  color: var(--bg-yellow-btn-entrar);
+  border-color: var(--color-border-btn-entrar);
+}

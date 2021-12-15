@@ -48,7 +48,10 @@
         <!-- menu -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?= $BASE_URL ?>auth.php">Entrar / Cadastrar</a>
+            <a class="nav-link active" aria-current="page" href="<?= $BASE_URL ?>login.php">Entrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<?= $BASE_URL ?>cadastrar.php">Cadastrar</a>
           </li>
         </ul>
       </div>
