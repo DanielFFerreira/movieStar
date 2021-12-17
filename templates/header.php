@@ -2,7 +2,7 @@
   // inserindo uma vez o arquivo globals
   require_once("config/globals.php");
   // inserir o arquivo de conexão com o banco de dados
-  require_once("app/database/db.php");
+  require_once("database/db.php");
   // array da mensagem type/msg
   $flassMessage = [];
 ?>
@@ -48,10 +48,7 @@
         <!-- menu -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?= $BASE_URL ?>login.php">Entrar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?= $BASE_URL ?>cadastrar.php">Cadastrar</a>
+            <a href="<?= $BASE_URL ?>auth.php" class="nav-link">Entrar / Cadastrar</a>
           </li>
         </ul>
       </div>
