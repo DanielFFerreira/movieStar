@@ -3,7 +3,7 @@
   // inserindo uma vez o arquivo globals
   require_once("config/globals.php");
   // inserir o arquivo de conexão com o banco de dados
-  require_once("app/database/db.php");
+  require_once("database/db.php");
   // logar usuarios
   require_once("models/User.php");
   require_once("config/dao/UserDAO.php");

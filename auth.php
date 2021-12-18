@@ -10,7 +10,7 @@
           <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
             <input type="hidden" name="type" value="login">
             <div class="form-group">
-              <label for="email">E-mail:</label>
+              <label for="email" class="mt-4">E-mail:</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
             </div>
             <div class="form-group">
@@ -25,7 +25,7 @@
           <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
             <input type="hidden" name="type" value="register">
             <div class="form-group">
-              <label for="email">E-mail:</label>
+              <label for="email" class="mt-4">E-mail:</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
             </div>
             <div class="form-group">
