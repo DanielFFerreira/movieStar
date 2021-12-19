@@ -23,7 +23,7 @@
     }
 
     public function getMessage() {
-
+      // se não estiver vázio a sessão
       if(!empty($_SESSION["msg"])) {
         return [
           "msg" => $_SESSION["msg"],

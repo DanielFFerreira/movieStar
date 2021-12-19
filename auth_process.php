@@ -6,7 +6,10 @@
   require_once("database/db.php");
   // logar usuarios
   require_once("models/User.php");
+  require_once("models/Message.php");
   require_once("config/dao/UserDAO.php");
+
+  $message = new Message($BASE_URL);
 
   // resgata o tipo do formulário
   $type = filter_input(INPUT_POST, "type");
@@ -25,7 +28,7 @@
 
     }else {
       // enviar uma msg de erro, dos dados faltantes
-      
+      $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
     }
 
   }else if($type === "login") {

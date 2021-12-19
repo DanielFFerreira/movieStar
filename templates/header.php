@@ -3,8 +3,12 @@
   require_once("config/globals.php");
   // inserir o arquivo de conexão com o banco de dados
   require_once("database/db.php");
+  require_once("models/Message.php");
   // array da mensagem type/msg
-  $flassMessage = [];
+  $flassMessage = $message->getMessage();
+
+  $message = new Message($BASE_URL);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
