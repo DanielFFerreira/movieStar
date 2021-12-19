@@ -10,7 +10,7 @@
     public $password;
     public $image;
     public $token;
-    public $biography;
+    public $biografy;
   }
 
   interface UserDAOInterface {

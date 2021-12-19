@@ -1,0 +1,27 @@
+/* login */
+.card-btn {
+  color: var(--bg-dark);
+  background: var(--bg-yellow-btn-entrar);
+  border: 3px solid var(--color-border-btn-entrar);
+  width: 100%;
+}
+.card-btn:hover {
+  background-color: transparent;
+  color: var(--bg-yellow-btn-entrar);
+  border-color: var(--color-border-btn-entrar);
+}
+
+#auth-row {
+  justify-content: space-evenly;
+}
+.m-bottom-5 {
+  margin-bottom: var(--mb-5) !important;
+}
+#login-container h2,
+#register-container h2 {
+  text-align: center;
+  border-bottom: 2px solid #F5C518;
+  width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+}

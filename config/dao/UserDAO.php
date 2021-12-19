@@ -26,7 +26,7 @@
       $user->email = $data["email"];
       $user->password = $data["password"];
       $user->image = $data["image"];
-      $user->bio = $data["bio"];
+      $user->biografy = $data["biografy"];
       $user->token = $data["token"];
 
       return $user;

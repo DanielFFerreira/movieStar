@@ -12,7 +12,7 @@
   $type = filter_input(INPUT_POST, "type");
 
   // verificação do tipo de formulário
-  if($type === "registrar") {
+  if($type === "register") { 
 
     $name = filter_input(INPUT_POST, "name");
     $lastname = filter_input(INPUT_POST, "lastname");

@@ -1,31 +1,32 @@
 <?php
-  include_once("templates/header.php");
+  require_once("templates/header.php");
 ?>
-  <!-- main -->
   <div id="main-container" class="container-fluid">
-    <div class="col-md-10">
+    <div class="col-md-12">
       <div class="row" id="auth-row">
-        <div class="col-md-4 mx-auto" id="login-container">
-          <h2 class="mt-5">Entrar</h2>
+        <div class="col-md-4" id="login-container">
+          <h2 class="my-5">Entrar</h2>
           <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
             <input type="hidden" name="type" value="login">
             <div class="form-group">
-              <label for="email" class="mt-4">E-mail:</label>
+              <label for="email">E-mail:</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
             </div>
             <div class="form-group">
               <label for="password">Senha:</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
             </div>
-            <input type="submit" class="btn card-btn" value="Entrar">
+            <div class="form-group pt-3">
+              <input type="submit" class="btn card-btn" value="Entrar">
+            </div>
           </form>
         </div>
         <div class="col-md-4" id="register-container">
-          <h2 class="mt-5">Criar Conta</h2>
+          <h2 class="my-5">Criar Conta</h2>
           <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
             <input type="hidden" name="type" value="register">
             <div class="form-group">
-              <label for="email" class="mt-4">E-mail:</label>
+              <label for="email">E-mail:</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
             </div>
             <div class="form-group">
@@ -44,13 +45,14 @@
               <label for="confirmpassword">Confirmação de senha:</label>
               <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirme sua senha">
             </div>
-            <input type="submit" class="btn card-btn" value="Registrar">
+            <div class="form-group pt-3 m-bottom-5">
+              <input type="submit" class="btn card-btn" value="Registrar">
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-
 <?php
-  include_once("templates/footer.php");
+  require_once("templates/footer.php");
 ?>

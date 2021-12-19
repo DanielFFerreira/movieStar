@@ -13,4 +13,7 @@
   --color-msg-sucess: #0f5132;
   --bg-yellow-btn-entrar: #ffae23;
   --color-border-btn-entrar: #ffcc77;
+
+  /* margin */
+  --mb-5: 5rem;
 }
