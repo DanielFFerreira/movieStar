@@ -10,6 +10,7 @@
   require_once("config/dao/UserDAO.php");
 
   $message = new Message($BASE_URL);
+  $userDao = new UserDAO($conn, $BASE_URL);
 
   // resgata o tipo do formulário
   $type = filter_input(INPUT_POST, "type");
@@ -25,10 +26,29 @@
 
     // verificação(validar) de dados mínimos
     if($name && $lastname && $email && $password) {
+      // verificar se as senhas batem
+      if($password === $confirmpassword) {
+        // verificar se o e-mail já está cadastrado no sistema
+        if($userDao->findByEmail($email) === false) {
+
+        }else {
+          // enviar uma msg de erro, usuário já existe
+          $message->setMessage("Usuário já cadastrado. Por favor tente outro e-mail.", "error", "back");
+        }
+
+      }else {
+        // enviar uma msg de erro, senhas não conferem
+        $message->setMessage("Senhas não são iguais.", "error", "back");
+      }
 
     }else {
       // enviar uma msg de erro, dos dados faltantes
       $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
+    }
+
+    // verificar o tamanho da senha
+    if(strlen($password > 10)) {
+      $message->setMessage("A senha ultrapassou o tamanho máximo permitido.", "error", "back");
     }
 
   }else if($type === "login") {
