@@ -4,10 +4,18 @@
   // inserir o arquivo de conexão com o banco de dados
   require_once("database/db.php");
   require_once("models/Message.php");
+
+  // instanciando classe Message
+  $message = new Message($BASE_URL);
+
   // array da mensagem type/msg
   $flassMessage = $message->getMessage();
 
-  $message = new Message($BASE_URL);
+  // se não estiver vázio a sessão
+  if(!empty($flassMessage["msg"])) {
+    // limpar a mensagem
+    $message->clearMessage();
+  }
 
 ?>
 <!DOCTYPE html>
