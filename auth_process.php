@@ -47,8 +47,31 @@
     }
 
     // verificar o tamanho da senha
-    if(strlen($password > 10)) {
+    if(strlen($password >= 12)) {
       $message->setMessage("A senha ultrapassou o tamanho máximo permitido.", "error", "back");
+    }
+
+    // if(strlen($password < 3)) {
+    //   $message->setMessage("A senha têm que ter no mínimo que quatro caracteres.", "error", "back");
+    // }
+    /* 
+      Pode conter letras e números
+      Deve conter pelo menos 1 número e 1 letra
+      Pode conter qualquer um desses caracteres: !@#$%
+      Deve ter 8-12 caracteres
+    */
+
+    // validando senha permitindo caracteres, números e letras
+    if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+      $message->setMessage(
+        "
+        A senha não atende aos requisitos!
+        No mínimo têm que conter letras e números.
+        Deve conter pelo menos 1 número e 1 letra Maiúscula.
+        Pode conter qualquer um desses caracteres: !@#$%.
+        Deve ter de 8 até 12 caracteres.
+        ", "error", "back"
+      );
     }
 
   }else if($type === "login") {
