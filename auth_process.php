@@ -47,10 +47,23 @@
       $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
     }
 
-    // verificar o tamanho da senha
-    if(strlen($password > 12)) {
-      $message->setMessage("A senha ultrapassou o tamanho máximo permitido.", "error", "back");
+    // validando senha permitindo caracteres, números e letras
+    if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+      $message->setMessage(
+        "
+        A senha não atende aos requisitos!
+        No mínimo têm que conter letras e números.
+        Deve conter pelo menos 1 número e 1 letra Maiúscula.
+        Pode conter qualquer um desses caracteres: !@#$%.
+        Deve ter de 8 até 12 caracteres.
+        ", "error", "back"
+      );
     }
+
+     // verificar o tamanho da senha
+    // if(strlen($password >= 12)) {
+    //   $message->setMessage("A senha ultrapassou o tamanho máximo permitido.", "error", "back");
+    // }
 
     // if(strlen($password < 1)) {
     //   $message->setMessage("Informe a senha.", "error", "back");
@@ -63,19 +76,6 @@
       Pode conter qualquer um desses caracteres: !@#$%
       Deve ter 8-12 caracteres
     */
-
-    // validando senha permitindo caracteres, números e letras
-    // if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
-    //   $message->setMessage(
-    //     "
-    //     A senha não atende aos requisitos!
-    //     No mínimo têm que conter letras e números.
-    //     Deve conter pelo menos 1 número e 1 letra Maiúscula.
-    //     Pode conter qualquer um desses caracteres: !@#$%.
-    //     Deve ter de 8 até 12 caracteres.
-    //     ", "error", "back"
-    //   );
-    // }
 
   }else if($type === "login") {
 
