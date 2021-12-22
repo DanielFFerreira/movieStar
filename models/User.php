@@ -10,13 +10,13 @@
     public $password;
     public $image;
     public $token;
-    public $biografy;
+    public $bio;
 
     public function generateToken() {
       return bin2hex(random_bytes(50));
     }
     public function generatePassword($password) {
-      $finalPassword = password_hash($password, PASSWORD_DEFAULT);
+      return password_hash($password, PASSWORD_DEFAULT);
     }
   }
 

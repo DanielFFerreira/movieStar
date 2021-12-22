@@ -72,7 +72,6 @@
       $message->setMessage(
         "
         A senha não atende aos requisitos!
-        No mínimo têm que conter letras e números.
         Deve conter pelo menos 1 número e 1 letra Maiúscula.
         Pode conter qualquer um desses caracteres: !@#$%.
         Deve ter de 8 até 12 caracteres.

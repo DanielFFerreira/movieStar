@@ -1,12 +1,14 @@
 <?php
   // importando
   require_once("models/User.php");
+  require_once("models/Message.php");
 
   class UserDAO implements UserDAOInterface {
 
     // chamar conexão e url
     private $conn;
     private $url;
+    private $message;
 
     // iniciando o construtor
     public function __construct(PDO $conn, $url)
@@ -14,6 +16,7 @@
       // aqui estou dando um nome e chamando a conexão e url
       $this->conn = $conn;
       $this->url = $url;
+      $this->message = new Message($url);
     }
 
     public function buildUser($data) {
@@ -26,12 +29,12 @@
       $user->email = $data["email"];
       $user->password = $data["password"];
       $user->image = $data["image"];
-      $user->biografy = $data["biografy"];
+      $user->bio = $data["bio"];
       $user->token = $data["token"];
 
       return $user;
     }
-    public function create(User $user, $cadUser = false) {
+    public function create(User $user, $authUser = false) {
 
       $stmt = $this->conn->prepare("INSERT INTO users(
         name, lastname, email, password, token
@@ -45,20 +48,44 @@
       $stmt->bindParam(":password", $user->password);
       $stmt->bindParam(":token", $user->token);
 
+      // executar
       $stmt->execute();
 
       // autenticar usuário, caso o método auth seja true
-      // if($authUser) {
-      //   $this->setTokenToSession($user->token);
-      // }
+      if($authUser) {
+        $this->setTokenToSession($user->token);
+      }
     }
     public function update(User $user, $redirect = true) {
 
     }
     public function verifyToken($protected = false) {
+      // verificar se a sessão do token está vazio.
+      if(!empty($_SESSION["token"])) {
+        // pegar o token que está na sessão
+        $token = $_SESSION["token"];
 
+        $user = $this->findByToken($token);
+
+        if($user) {
+          return $user;
+        }else {
+          // redireciona usuário não autenticado.
+          $this->message->setMessage("Faça a autenticação para acessar esta página!", "error", "index.php");
+        }
+
+      }else {
+        return false;
+      }
     }
     public function setTokenToSession($token, $redirect = true) {
+      // salvar token na session(sessão).
+      $_SESSION["token"] = $token;
+
+      if($redirect) {
+        // redireciona para o perfil do usuário.
+        $this->message->setMessage("Seja bem-vindo!", "success", "editprofile.php");
+      }
 
     }
     public function authenticateUser($email, $password) {
@@ -92,7 +119,28 @@
 
     }
     public function findByToken($token) {
+      // verificar se o email é diferente de vázio
+      if($token != "") {
 
+        // buscar no banco a tabela (users).
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE token = :token");
+        $stmt->bindParam("token", $token);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0) {
+
+          $data = $stmt->fetch();
+          $user = $this->buildUser($data);
+
+          return $user;
+
+        }else {
+          return false;
+        }
+
+      }else {
+        return false;
+      }
     }
     public function destroyToken() {
 

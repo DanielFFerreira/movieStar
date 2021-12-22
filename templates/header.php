@@ -4,6 +4,7 @@
   // inserir o arquivo de conexão com o banco de dados
   require_once("database/db.php");
   require_once("models/Message.php");
+  require_once("config/dao/UserDAO.php");
 
   // instanciando classe Message
   $message = new Message($BASE_URL);
@@ -16,6 +17,10 @@
     // limpar a mensagem
     $message->clearMessage();
   }
+
+  $userDao = new UserDAO($conn, $BASE_URL);
+
+  $userData = $userDao->verifyToken(false);
 
 ?>
 <!DOCTYPE html>
@@ -59,9 +64,15 @@
       <div class="collapse navbar-collapse" id="navbar">
         <!-- menu -->
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="<?= $BASE_URL ?>auth.php" class="nav-link">Entrar / Cadastrar</a>
-          </li>
+
+          <?php if($userData): ?>
+            <p>Está logado</p>
+          <?php else: ?>
+            <li class="nav-item">
+              <a href="<?= $BASE_URL ?>auth.php" class="nav-link">Entrar / Cadastrar</a>
+            </li>
+          <?php endif; ?>
+          
         </ul>
       </div>
     </nav>
