@@ -3,7 +3,7 @@
   require_once("models/User.php");
   require_once("models/Message.php");
 
-  class UserDAO implements UserDAOInterface {
+  class UserDao implements UserDAOInterface {
 
     // chamar conexão e url
     private $conn;
@@ -69,13 +69,14 @@
 
         if($user) {
           return $user;
-        }else {
+        }else if($protected) {
           // redireciona usuário não autenticado.
           $this->message->setMessage("Faça a autenticação para acessar esta página!", "error", "index.php");
         }
 
-      }else {
-        return false;
+      }else if($protected) {
+        // redireciona usuário não autenticado.
+        $this->message->setMessage("Faça a autenticação para acessar esta página!", "error", "index.php");
       }
     }
     public function setTokenToSession($token, $redirect = true) {
@@ -143,7 +144,11 @@
       }
     }
     public function destroyToken() {
+      // remover o toen da sessão(session).
+      $_SESSION["token"] = "";
 
+      // redirecionar e apresentar a mensagem de sucesso.
+      $this->message->setMessage("Você fez o logout com sucesso!", "success", "index.php");
     }
     public function changePassword(User $user) {
 
