@@ -55,16 +55,19 @@
         }else {
           // enviar uma msg de erro, usuário já existe
           $message->setMessage("Usuário já cadastrado, tente outro e-mail.", "error", "back");
+          exit;
         }
 
       }else {
         // enviar uma msg de erro, senhas não conferem
         $message->setMessage("Senhas não são iguais.", "error", "back");
+        exit;
       }
 
     }else {
       // enviar uma msg de erro, dos dados faltantes
       $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
+      exit;
     }
 
     // validando senha permitindo caracteres, números e letras
@@ -77,6 +80,8 @@
         Deve ter de 8 até 12 caracteres.
         ", "error", "back"
       );
+      exit;
+      
     }
 
      // verificar o tamanho da senha
