@@ -11,6 +11,13 @@
     public $image;
     public $token;
     public $biografy;
+
+    public function generateToken() {
+      return bin2hex(random_bytes(50));
+    }
+    public function generatePassword($password) {
+      $finalPassword = password_hash($password, PASSWORD_DEFAULT);
+    }
   }
 
   interface UserDAOInterface {

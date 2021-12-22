@@ -33,6 +33,24 @@
     }
     public function create(User $user, $cadUser = false) {
 
+      $stmt = $this->conn->prepare("INSERT INTO users(
+        name, lastname, email, password, token
+      ) VALUES (
+        :name, :lastname, :email, :password, :token
+      )");
+
+      $stmt->bindParam(":name", $user->name);
+      $stmt->bindParam(":lastname", $user->lastname);
+      $stmt->bindParam(":email", $user->email);
+      $stmt->bindParam(":password", $user->password);
+      $stmt->bindParam(":token", $user->token);
+
+      $stmt->execute();
+
+      // autenticar usuário, caso o método auth seja true
+      // if($authUser) {
+      //   $this->setTokenToSession($user->token);
+      // }
     }
     public function update(User $user, $redirect = true) {
 
@@ -50,6 +68,7 @@
       // verificar se o email é diferente de vázio
       if($email != "") {
 
+        // buscar no banco a tabela (users).
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam("email", $email);
         $stmt->execute();
