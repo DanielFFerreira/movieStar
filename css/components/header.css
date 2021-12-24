@@ -49,6 +49,9 @@
 .navbar-nav .nav-item .nav-link:hover {
   color: var(--color-hover-gray);
 }
+.nav-item.nav-item--name {
+  margin-right: var(--mr-2);
+}
 .bold {
   font-weight: bold;
 }
