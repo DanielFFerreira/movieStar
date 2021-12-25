@@ -29,7 +29,7 @@
       $user->email = $data["email"];
       $user->password = $data["password"];
       $user->image = $data["image"];
-      $user->biografy = $data["biografy"];
+      $user->biography = $data["biography"];
       $user->token = $data["token"];
 
       return $user;
@@ -63,7 +63,7 @@
         lastname = :lastname,
         email = :email,
         image = :image,
-        biografy = :biografy,
+        biography = :biography,
         token = :token
         WHERE id = :id
       ");
@@ -72,7 +72,7 @@
       $stmt->bindParam(":lastname", $user->lastname);
       $stmt->bindParam(":email", $user->email);
       $stmt->bindParam(":image", $user->image);
-      $stmt->bindParam(":biografy", $user->biografy);
+      $stmt->bindParam(":biography", $user->biography);
       $stmt->bindParam(":token", $user->token);
       $stmt->bindParam(":id", $user->id);
 

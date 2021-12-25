@@ -3,13 +3,71 @@
 
   require_once("config/dao/UserDAO.php");
 
+  require_once("models/User.php");
+
+  $user = new User();
+
   $userDao = new UserDao($conn, $BASE_URL);
 
   $userData = $userDao->verifyToken(true);
+
+  $fullName = $user->getFullName($userData);
+
+  if($userData->image == "") {
+    $userData->image = "user.png";
+  }
+  
 ?>
   <!-- main -->
   <main id="main-container" class="container-fluid">
-    <h1>Edição de Perfil</h1>
+    <div class="col-md-12">
+      <form action="<?= $BASE_URL ?>user_process.php" method="post">
+        <input type= "hidden" name="type" value="update">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="col-md-10 mt-5">
+              <h1><?= $fullName ?></h1>
+              <p class="page-description">Altere seus dados no formulário abaixo:</p>
+
+              <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Digite o seu nome" value="<?= $userData->name ?>">
+              </div>
+
+              <div class="form-group">
+                <label for="lastname">Sobrenome:</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Digite o seu sobrenome" value="<?= $userData->lastname ?>">
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="text" readonly class="form-control disabled" id="email" name="email" placeholder="Digite o seu nome" value="<?= $userData->email ?>">
+              </div>
+
+              <input type="submit" class="btn card-btn mt-4" value="Alterar">
+
+            </div>
+          </div>
+
+          <div class="col-md-4 mt-5">
+            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
+
+            <div class="form-group">
+              <label for="image">Foto:</label>
+              <input type="file" class="form-control-file" name="image">
+            </div>
+            <div class="form-group">
+              <label for="bio">Sobre você:</label>
+              <textarea class="form-control" name="bio" id="bio" rows="5" placeholder="Conte quem você é, o que faz e onde trabalha..."><?= $userData->bio ?></textarea>
+            </div>
+          </div>
+
+
+
+        </div>
+      </form>
+    </div>
   </main>
 
 <?php
