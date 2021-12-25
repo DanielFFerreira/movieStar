@@ -29,7 +29,7 @@
       $user->email = $data["email"];
       $user->password = $data["password"];
       $user->image = $data["image"];
-      $user->biography = $data["biography"];
+      $user->biografy = $data["biografy"];
       $user->token = $data["token"];
 
       return $user;
