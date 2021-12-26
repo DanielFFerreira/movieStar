@@ -19,7 +19,7 @@
   
 ?>
   <!-- main -->
-  <main id="main-container" class="container-fluid">
+  <main id="main-container" class="container-fluid edit-profile-page">
     <div class="col-md-12">
       <form action="<?= $BASE_URL ?>user_process.php" method="post">
         <input type= "hidden" name="type" value="update">
