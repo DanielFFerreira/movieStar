@@ -26,7 +26,7 @@
         <div class="row">
 
           <div class="col-md-6">
-            <div class="col-md-10 mt-5">
+            <div class="col-md-10 mt-5">  
               <h1><?= $fullName ?></h1>
 
               <p class="page-description my-3">Altere seus dados no formulário abaixo:</p>
@@ -72,7 +72,7 @@
       <div class="row" id="change-password-container">
         <div class="col-md-4 mt-5 mx-3">
           <h2>Alterar a senha:</h2>
-          <p class="page-description">Digite a nova senha e confirme, para alterar sua senha:</p>
+          <p class="page-description my-3">Digite a nova senha e confirme, para alterar sua senha:</p>
           <form action="<?= $BASE_URL ?>user_process.php" method="post">
             <input type="hidden" name="type" value="changepassword">
             <div class="form-group">

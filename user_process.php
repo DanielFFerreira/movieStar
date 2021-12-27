@@ -53,9 +53,11 @@
           $imageFile = imagecreatefromjpeg($image["tmp_name"]);
 
         }else {
-          
+
           $imageFile = imagecreatefrompng($image["tmp_name"]);
         }
+
+        $imageName = $user->imageGenerateName();
 
       }else {
         $message->setMessage("Tipo inválido de imagem, insira png ou jpg", "error", "back");
