@@ -63,7 +63,7 @@
         lastname = :lastname,
         email = :email,
         image = :image,
-        biography = :biography,
+        biografy = :biografy,
         token = :token
         WHERE id = :id
       ");
@@ -72,7 +72,7 @@
       $stmt->bindParam(":lastname", $user->lastname);
       $stmt->bindParam(":email", $user->email);
       $stmt->bindParam(":image", $user->image);
-      $stmt->bindParam(":biography", $user->biography);
+      $stmt->bindParam(":biografy", $user->biografy);
       $stmt->bindParam(":token", $user->token);
       $stmt->bindParam(":id", $user->id);
 
@@ -193,7 +193,7 @@
       }
     }
     public function destroyToken() {
-      // remover o toen da sessão(session).
+      // remover o token da sessão(session).
       $_SESSION["token"] = "";
 
       // redirecionar e apresentar a mensagem de sucesso.
