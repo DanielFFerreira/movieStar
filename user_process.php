@@ -41,7 +41,7 @@
       
       $image = $_FILES["image"];
       $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
-      $jpgArray = ["imagejpeg", "image/jpg"];
+      $jpgArray = ["image/jpeg", "image/jpg"];
 
       // checar o tipo da imagem
       if(in_array($image["type"], $imageTypes)) {
@@ -58,6 +58,12 @@
         }
 
         $imageName = $user->imageGenerateName();
+
+        // criar imagem jpeg - imagem do arquivo, caminho das pasta vai ficar armazenado, nome da imagem, qualidade da imagem.
+        imagejpeg($imageFile, "./img/users/" . $imageName, 100);
+
+        // salvar no banco a imagem
+        $userData->image = $imageName;
 
       }else {
         $message->setMessage("Tipo inválido de imagem, insira png ou jpg", "error", "back");
