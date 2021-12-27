@@ -10,7 +10,7 @@
     public $password;
     public $image;
     public $token;
-    public $bio;
+    public $biografy;
 
     public function getFullName($user) {
       return $user->name . " " . $user->lastname;

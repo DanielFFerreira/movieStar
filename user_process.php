@@ -36,6 +36,33 @@
     $userData->email = $email;
     $userData->biografy = $biografy;
 
+    // upload de imagem
+    if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
+      
+      $image = $_FILES["image"];
+      $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
+      $jpgArray = ["imagejpeg", "image/jpg"];
+
+      // checar o tipo da imagem
+      if(in_array($image["type"], $imageTypes)) {
+
+        // checar se é jpg.
+        if(in_array($image, $jpgArray)) {
+
+          // cria uma nova imagem a a partir de um arquivo ou URL
+          $imageFile = imagecreatefromjpeg($image["tmp_name"]);
+
+        }else {
+          
+          $imageFile = imagecreatefrompng($image["tmp_name"]);
+        }
+
+      }else {
+        $message->setMessage("Tipo inválido de imagem, insira png ou jpg", "error", "back");
+      }
+
+    }
+
     $userDao->update($userData);
 
   }else if($type === "changepassword") {

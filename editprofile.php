@@ -21,14 +21,15 @@
   <!-- main -->
   <main id="main-container" class="container-fluid edit-profile-page">
     <div class="col-md-12">
-      <form action="<?= $BASE_URL ?>user_process.php" method="post">
+      <form action="<?= $BASE_URL ?>user_process.php" method="post" enctype="multipart/form-data">
         <input type= "hidden" name="type" value="update">
         <div class="row">
 
           <div class="col-md-6">
             <div class="col-md-10 mt-5">
               <h1><?= $fullName ?></h1>
-              <p class="page-description">Altere seus dados no formulário abaixo:</p>
+
+              <p class="page-description my-3">Altere seus dados no formulário abaixo:</p>
 
               <div class="form-group">
                 <label for="name">Nome:</label>
@@ -51,6 +52,7 @@
           </div>
 
           <div class="col-md-4 mt-5">
+
             <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
 
             <div class="form-group">
@@ -58,8 +60,8 @@
               <input type="file" class="form-control-file" name="image">
             </div>
             <div class="form-group">
-              <label for="bio">Sobre você:</label>
-              <textarea class="form-control" name="bio" id="bio" rows="5" placeholder="Conte quem você é, o que faz e onde trabalha..."><?= $userData->bio ?></textarea>
+              <label for="biografy">Sobre você:</label>
+              <textarea class="form-control" name="biografy" id="biografy" rows="5" placeholder="Conte quem você é, o que faz e onde trabalha..."><?= $userData->biografy ?></textarea>
             </div>
           </div>
 
