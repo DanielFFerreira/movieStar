@@ -57,6 +57,12 @@
           $imageFile = imagecreatefrompng($image["tmp_name"]);
         }
 
+        // if(file_exists($image)) {
+        //   return true;
+        // }else {
+        //   return false;
+        // }
+
         $imageName = $user->imageGenerateName();
 
         // criar imagem jpeg - imagem do arquivo, caminho das pasta vai ficar armazenado, nome da imagem, qualidade da imagem.
@@ -74,6 +80,20 @@
     $userDao->update($userData);
 
   }else if($type === "changepassword") {
+
+    // receber os dados do post
+    $password = filter_input(INPUT_POST, "password");
+    $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+    $id = filter_input(INPUT_POST, "id");
+    
+    // Resgata dados do usuário
+    $userData = $userDao->verifyToken(); 
+
+    if($password == $confirmpassword) {
+
+    }else {
+      $message->setMessage("As senhas não são iguais!", "error", "back");
+    }   
 
   }else {
     $message->setMessage("Informações inválidas.", "error", "index.php");

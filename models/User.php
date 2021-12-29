@@ -25,7 +25,10 @@
     }
 
     public function imageGenerateName() {
-      return bin2hex(random_bytes(60)) . ".jpg";
+      // validação com nome do id da tabela, linkado com o nome da imagem.]
+      // chamar o usuário, verificar se a imagem está com id correto.
+      // return bin2hex(random_bytes(60)) . ".jpg";
+      // return .  . ".jpg";
     }
  
   }
